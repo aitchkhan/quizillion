@@ -1,0 +1,14 @@
+<h3>Please select a quiz from the list below to start</h3>
+
+<mat-list role="list">
+  <mat-list-item role="listitem" *ngFor="let quiz of quizList"
+  (click)="onQuizClick(quiz.id)" value="quiz.id">
+    {{quiz.title}}
+  </mat-list-item>
+</mat-list>
+
+<button (click)="createQuiz()" mat-fab color="primary">
+  <mat-icon>add</mat-icon>
+</button>
+
+

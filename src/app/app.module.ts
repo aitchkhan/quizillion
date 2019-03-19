@@ -13,6 +13,7 @@ import { SharedModule } from './shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SplashComponent } from './splash/splash.component';
 import { AuthGuard } from './auth.guard';
+import { QuizModule } from './quiz/quiz.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { AuthGuard } from './auth.guard';
     AngularFireModule.initializeApp(environment.firebase, 'quizillion'),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    SharedModule
+    SharedModule,
   ],
 
   bootstrap: [

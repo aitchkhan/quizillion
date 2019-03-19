@@ -1,0 +1,59 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Create Quiz</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="quizForm">
+      <!--  -->
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Title" formControlName="title">
+        </mat-form-field>
+        <br>
+        <h4>Questions</h4>
+        <button mat-icon-button (click)="addQuestion()" aria-label="Add Question">
+            <mat-icon>
+                add
+              </mat-icon>
+        </button>
+
+        <div formArrayName="questions" *ngFor="let question of questions.controls; let i=index">
+          <div [formGroupName]="i">
+            <div *ngIf="i == currentQuestionIndex">
+              {{currentQuestionIndex + 1}}
+              <input matInput placeholder="Question Text" formControlName="text">
+              Options:
+              <div formGroupName="options">
+                <input matInput placeholder="Option a" formControlName="a">
+                <input matInput placeholder="Option b" formControlName="b">
+                <input matInput placeholder="Option c" formControlName="c">
+                <input matInput placeholder="Option d" formControlName="d">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button mat-icon-button [disabled]="currentQuestionIndex == 0" (click)="prevQuestion()">
+            <mat-icon>
+              arrow_back_ios
+            </mat-icon>
+          </button>
+          <button mat-icon-button [disabled]="currentQuestionIndex == i" (click)="nextQuestion()">
+            <mat-icon>
+              arrow_forward_ios
+            </mat-icon>
+          </button>
+        </div>
+        <div>
+
+
+          <button mat-raised-button>
+            Preview
+          </button>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+
+
+</mat-card>

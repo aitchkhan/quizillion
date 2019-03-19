@@ -6,14 +6,20 @@ import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
+    path: '',
+    pathMatch: 'full',
+    component: SplashComponent
+  },
+  {
+    path: 'quiz',
+    loadChildren: './quiz/quiz.module#QuizModule'
+  },
+  {
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [AuthGuard]
   },
-  {
-    path: '',
-    component: SplashComponent
-  }
+
 
 ];
 
